@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "title": "learn fastAPI",
+    "status": "done"
+  },
+  {
+    "id": 2,
+    "title": "learn Python",
+    "status": "todo"
+  },
+  {
+    "id": 3,
+    "title": "learn Cursor",
+    "status": "todo"
+  },
+  {
+    "id": 4,
+    "title": "code a nice front page",
+    "status": "todo"
+  }
+]
