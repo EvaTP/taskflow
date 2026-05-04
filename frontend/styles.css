@@ -1,0 +1,158 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f7fb;
+  color: #1f2937;
+}
+
+.container {
+  max-width: 700px;
+  margin: 40px auto;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+  margin-top: 0;
+}
+
+.subtitle {
+  color: #4b5563;
+}
+
+.actions {
+  margin: 18px 0;
+}
+
+.create-form {
+  display: flex;
+  gap: 10px;
+}
+
+.create-form input {
+  flex: 1;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+button.primary,
+.create-form button[type="submit"],
+#loadTasksBtn {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+}
+
+button.primary:hover,
+.create-form button[type="submit"]:hover,
+#loadTasksBtn:hover {
+  background: #1d4ed8;
+}
+
+.message {
+  min-height: 24px;
+  color: #374151;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+}
+
+.task-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.task-title {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.task-actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+button.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  color: #374151;
+  cursor: pointer;
+}
+
+button.icon-btn:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+button.icon-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+button.icon-btn--delete {
+  background: #fef2f2;
+  color: #dc2626;
+  border-color: #fecaca;
+}
+
+button.icon-btn--delete:hover {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.status {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #e5e7eb;
+}
+
+.status.todo {
+  background: #fef3c7;
+}
+
+.status.in_progress {
+  background: #dbeafe;
+}
+
+.status.done {
+  background: #dcfce7;
+}

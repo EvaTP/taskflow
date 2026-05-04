@@ -7,3 +7,6 @@ backend/.venv/
 
 # macOS
 .DS_Store
+
+notes.md
+

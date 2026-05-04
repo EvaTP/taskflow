@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TaskFlow Front</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>TaskFlow</h1>
+      <p class="subtitle">Mini front pour afficher les taches de l'API FastAPI.</p>
+
+      <div class="actions">
+        <form id="createTaskForm" class="create-form">
+          <input
+            id="titleInput"
+            type="text"
+            placeholder="Titre de la nouvelle tache"
+            maxlength="200"
+            required
+          />
+          <button type="submit">Ajouter une tache</button>
+        </form>
+      </div>
+
+      <div class="actions">
+        <button id="loadTasksBtn">Charger les taches</button>
+      </div>
+
+      <p id="message" class="message"></p>
+
+      <ul id="taskList" class="task-list"></ul>
+    </main>
+
+    <!-- Icons Lucide (CDN). Version épinglee pour éviter une mise a jour cassante du site CDN. -->
+    <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

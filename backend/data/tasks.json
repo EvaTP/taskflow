@@ -7,7 +7,7 @@
   {
     "id": 2,
     "title": "learn Python",
-    "status": "todo"
+    "status": "done"
   },
   {
     "id": 3,
@@ -15,8 +15,8 @@
     "status": "todo"
   },
   {
-    "id": 4,
-    "title": "code a nice front page",
+    "id": 5,
+    "title": "find icons",
     "status": "todo"
   }
 ]

@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from app.routers.tasks import router as tasks_router
 
@@ -6,6 +7,14 @@ app = FastAPI(
     title="Taskflow API",
     version="0.1.0",
     description="API simple de gestion de taches pour apprendre FastAPI.",
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
