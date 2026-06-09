@@ -27,6 +27,7 @@ uvicorn app.main:app --reload
 - `GET /tasks` -> lister toutes les taches
 - `POST /tasks` -> creer une tache
 - `PATCH /tasks/{task_id}/status` -> changer le statut (`todo`, `in_progress`, `done`)
+- `PATCH /tasks/{task_id}` -> modifier le titre
 - `DELETE /tasks/{task_id}` -> supprimer une tache
 
 ## Exemple de creation de tache (Swagger)

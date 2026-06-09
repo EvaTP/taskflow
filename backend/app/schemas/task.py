@@ -33,3 +33,8 @@ class TaskStatusUpdate(BaseModel):
         if isinstance(value, str):
             return value.strip().lower().replace(" ", "_")
         return value
+
+
+class TaskTitleUpdate(BaseModel):
+    # Donnees acceptees pour modifier le titre d'une tache.
+    title: str = Field(min_length=1, max_length=200)

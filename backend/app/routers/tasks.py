@@ -1,6 +1,6 @@
 from fastapi import APIRouter, status
 
-from app.schemas.task import Task, TaskCreate, TaskStatusUpdate
+from app.schemas.task import Task, TaskCreate, TaskStatusUpdate, TaskTitleUpdate
 from app.services.task_store import task_store
 
 router = APIRouter(prefix="/tasks", tags=["tasks"])
@@ -22,6 +22,12 @@ def create_task(payload: TaskCreate) -> Task:
 def update_task_status(task_id: int, payload: TaskStatusUpdate) -> Task:
     # PATCH /tasks/{task_id}/status -> change le statut.
     return task_store.update_status(task_id=task_id, status=payload.status)
+
+
+@router.patch("/{task_id}", response_model=Task)
+def update_task_title(task_id: int, payload: TaskTitleUpdate) -> Task:
+    # PATCH /tasks/{task_id} -> modifie le titre.
+    return task_store.update_title(task_id=task_id, title=payload.title)
 
 
 @router.delete("/{task_id}", status_code=status.HTTP_204_NO_CONTENT)

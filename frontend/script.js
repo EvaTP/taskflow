@@ -55,6 +55,50 @@ async function patchTaskStatus(taskId, status) {
   }
 }
 
+async function updateTaskTitle(taskId, currentTitle) {
+  const newTitle = window.prompt(
+    `Nouveau titre pour la tache #${taskId} :`,
+    currentTitle,
+  );
+
+  if (newTitle === null) {
+    return;
+  }
+
+  const trimmedTitle = newTitle.trim();
+  if (!trimmedTitle) {
+    messageEl.textContent = "Le titre ne peut pas etre vide.";
+    return;
+  }
+
+  if (trimmedTitle === currentTitle) {
+    return;
+  }
+
+  messageEl.textContent = "Mise a jour du titre...";
+
+  try {
+    const response = await fetch(`${API_BASE_URL}/tasks/${taskId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ title: trimmedTitle }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    await loadTasks();
+    messageEl.textContent = `Titre de la tache #${taskId} mis a jour.`;
+  } catch (error) {
+    messageEl.textContent =
+      "Impossible de modifier le titre. Verifie que le backend tourne.";
+    console.error(error);
+  }
+}
+
 async function deleteTaskById(taskId) {
   const ok = window.confirm(`Supprimer la tache #${taskId} ?`);
   if (!ok) {
@@ -113,10 +157,10 @@ function renderTasks(tasks) {
 
     actions.appendChild(
       iconActionButton(
-        "circle-check-big",
+        "list-todo",
         "icon-btn",
-        "Marquer comme terminee",
-        () => patchTaskStatus(task.id, "done"),
+        "Marquer comme a faire",
+        () => patchTaskStatus(task.id, "todo"),
       ),
     );
 
@@ -126,6 +170,24 @@ function renderTasks(tasks) {
         "icon-btn",
         "Marquer comme en cours",
         () => patchTaskStatus(task.id, "in_progress"),
+      ),
+    );
+
+    actions.appendChild(
+      iconActionButton(
+        "circle-check-big",
+        "icon-btn",
+        "Marquer comme terminee",
+        () => patchTaskStatus(task.id, "done"),
+      ),
+    );
+
+    actions.appendChild(
+      iconActionButton(
+        "pencil",
+        "icon-btn",
+        "Modifier le titre",
+        () => updateTaskTitle(task.id, task.title),
       ),
     );
 
@@ -200,3 +262,6 @@ async function createTask(event) {
 
 createTaskForm.addEventListener("submit", createTask);
 loadTasksBtn.addEventListener("click", loadTasks);
+
+// Chargement automatique a l'ouverture de la page.
+loadTasks();

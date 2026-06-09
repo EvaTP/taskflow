@@ -56,6 +56,16 @@ class TaskStore:
         self._save_to_file()
         return updated_task
 
+    def update_title(self, task_id: int, title: str) -> Task:
+        task = self._tasks.get(task_id)
+        if task is None:
+            raise HTTPException(status_code=404, detail="Task not found")
+
+        updated_task = task.model_copy(update={"title": title})
+        self._tasks[task_id] = updated_task
+        self._save_to_file()
+        return updated_task
+
     def delete_task(self, task_id: int) -> None:
         if task_id not in self._tasks:
             raise HTTPException(status_code=404, detail="Task not found")
